@@ -32,4 +32,17 @@ class PostController extends Controller
         alert()->success('Post Deleted', 'Success');
         return redirect('/');
     }
+
+    public function postEditPost(Request $request)
+    {
+        $this->validate($request, [
+            'body' => 'required|max:1000'
+        ]);
+
+        $post = Post::findOrFail($request['postId']);
+        $post->body = $request['body'];
+        $post->update();
+        
+        return response()->json(['new_body' => $post->body], 200);
+    }
 }

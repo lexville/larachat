@@ -19,6 +19,7 @@
         <script src="/js/sweetalert.min.js"></script>
         <script src="/js/ripples.min.js"></script>
         <script src="/js/material.min.js"></script>
+        <script src="/js/app.js"></script>
         <script>
             $(document).ready(function() {
                 // This command is used to initialize some elements and make them work properly
