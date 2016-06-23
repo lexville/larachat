@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'uses' => 'HomeController@getHome',
+    'as'   => 'home'
+]);
 
 Route::post('/signup', [
     'uses' => 'AuthUserController@postSignUp',
@@ -28,4 +29,17 @@ Route::post('/signin', [
 Route::get('/logout', [
     'uses' => 'AuthUserController@getLogout',
     'as'   => 'logout'
+]);
+
+// Creating post route
+Route::post('/create-post', [
+    'uses'       => 'PostController@postCreatePost',
+    'as'         => 'post.create',
+    'middleware' => 'auth'
+]);
+
+Route::get('/delete-post/{postId}', [
+    'uses'       => 'PostController@getDeletePost',
+    'as'         => 'post.delete',
+    'middleware' => 'auth'
 ]);
